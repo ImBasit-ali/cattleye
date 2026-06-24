@@ -1,0 +1,4 @@
+# DEPRECATED — deploy using python_backend/render.yaml instead.
+# Push the python_backend/ folder as its own GitHub repo for Render.
+#
+# See python_backend/README.md for deploy steps.

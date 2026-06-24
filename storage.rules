@@ -1,0 +1,78 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Helper function to check if user owns the file
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+    
+    // Helper function to validate image file types
+    function isImage() {
+      return request.resource.contentType.matches('image/.*');
+    }
+    
+    // Helper function to validate video file types
+    function isVideo() {
+      return request.resource.contentType.matches('video/.*');
+    }
+    
+    // Helper function to check file size (max 50MB for images, 500MB for videos)
+    function isValidSize() {
+      return request.resource.size < 50 * 1024 * 1024 || 
+             (isVideo() && request.resource.size < 500 * 1024 * 1024);
+    }
+    
+    // Animal images - user-specific access
+    match /animal-images/{userId}/{allPaths=**} {
+      allow read: if isAuthenticated() && isOwner(userId);
+      allow write: if isAuthenticated() && isOwner(userId) && isImage() && isValidSize();
+      allow delete: if isAuthenticated() && isOwner(userId);
+    }
+    
+    // Videos - user-specific access
+    match /videos/{userId}/{allPaths=**} {
+      allow read: if isAuthenticated() && isOwner(userId);
+      allow write: if isAuthenticated() && isOwner(userId) && isVideo() && isValidSize();
+      allow delete: if isAuthenticated() && isOwner(userId);
+    }
+    
+    // Camera feeds - user-specific access
+    match /camera-feeds/{userId}/{allPaths=**} {
+      allow read: if isAuthenticated() && isOwner(userId);
+      allow write: if isAuthenticated() && isOwner(userId) && (isImage() || isVideo()) && isValidSize();
+      allow delete: if isAuthenticated() && isOwner(userId);
+    }
+    
+    // ML Models - read-only for authenticated users, write for admins
+    match /ml-models/{allPaths=**} {
+      allow read: if isAuthenticated();
+      allow write: if false; // Only allow through admin SDK
+    }
+    
+    // User profile pictures
+    match /profile-pictures/{userId}/{allPaths=**} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && isOwner(userId) && isImage() && request.resource.size < 5 * 1024 * 1024;
+      allow delete: if isAuthenticated() && isOwner(userId);
+    }
+    
+    // Reports and exports
+    match /reports/{userId}/{allPaths=**} {
+      allow read: if isAuthenticated() && isOwner(userId);
+      allow write: if isAuthenticated() && isOwner(userId);
+      allow delete: if isAuthenticated() && isOwner(userId);
+    }
+    
+    // Deny all other access by default
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

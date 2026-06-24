@@ -1,0 +1,31 @@
+{
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "ai-cattle-monitoring-system",
+          "appId": "1:270806145578:android:ead2e1a440213bc942c153",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "ai-cattle-monitoring-system",
+          "configurations": {
+            "android": "1:270806145578:android:ead2e1a440213bc942c153",
+            "ios": "1:270806145578:ios:5d5d5882463fd82142c153",
+            "macos": "1:270806145578:ios:5d5d5882463fd82142c153",
+            "web": "1:270806145578:web:ef8b0cb4c01f072342c153",
+            "windows": "1:270806145578:web:041e3e39def77b1d42c153"
+          }
+        }
+      }
+    }
+  }
+}

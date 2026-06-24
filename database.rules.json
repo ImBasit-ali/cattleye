@@ -1,0 +1,79 @@
+{
+  "rules": {
+    "user_profiles": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    },
+    "animals": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid",
+        ".indexOn": ["animal_id", "ear_tag_number", "milking_status"]
+      }
+    },
+    "ear_tag_camera": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid",
+        ".indexOn": ["cow_id", "timestamp", "detection_timestamp"]
+      }
+    },
+    "depth_camera": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid",
+        ".indexOn": ["cow_id", "post_milking_timestamp", "lameness_score"]
+      }
+    },
+    "side_view_camera": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid",
+        ".indexOn": ["cow_id", "timestamp"]
+      }
+    },
+    "milking_status": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid",
+        ".indexOn": ["cow_id", "timestamp", "is_being_milked"]
+      }
+    },
+    "video_records": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid",
+        ".indexOn": ["timestamp", "camera_type", "processing_status"]
+      }
+    },
+    "rgbd_camera": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid",
+        ".indexOn": ["cow_id", "timestamp"]
+      }
+    },
+    "activity_logs": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid",
+        ".indexOn": ["timestamp", "activity_type"]
+      }
+    },
+    "notifications": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid",
+        ".indexOn": ["timestamp", "is_read"]
+      }
+    },
+    "settings": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    }
+  }
+}

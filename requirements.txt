@@ -1,0 +1,2 @@
+# Render / Heroku entry point — full list lives in python_backend/requirements.txt
+-r python_backend/requirements.txt

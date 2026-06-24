@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "270806145578",
+    "project_id": "ai-cattle-monitoring-system",
+    "storage_bucket": "ai-cattle-monitoring-system.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:270806145578:android:ead2e1a440213bc942c153",
+        "android_client_info": {
+          "package_name": "com.example.cattle_ai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvq_NTErapq8oUbL1TPo-0ffoyPkFmUdg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

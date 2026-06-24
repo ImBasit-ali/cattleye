@@ -1,0 +1,83 @@
+name: cattle_ai
+description: "AI-powered cattle monitoring — Supabase + Render PyTorch backend"
+publish_to: 'none'
+
+version: 2.0.0+4
+
+environment:
+  sdk: ^3.10.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # State Management
+  provider: ^6.1.2
+
+  # Supabase (Auth + DB + Realtime)
+  supabase_flutter: ^2.3.0
+
+  # Environment variables
+  flutter_dotenv: ^5.1.0
+
+  # Charts
+  fl_chart: ^1.1.1
+
+  # UI Components
+  flutter_animate: ^4.5.0
+  shimmer: ^3.0.0
+  avatar_glow: ^3.0.1
+  loading_animation_widget: ^1.3.0
+  flutter_card_swiper: ^7.0.2
+
+  # Utilities
+  intl: ^0.20.2
+  uuid: ^4.4.2
+  shared_preferences: ^2.4.0
+  path_provider: ^2.1.4
+
+  # Networking
+  http: ^1.2.2
+  connectivity_plus: ^5.0.2
+
+  # AI / Image Processing
+  crypto: ^3.0.3
+  image: ^4.1.0
+
+  # File Handling
+  file_picker: ^8.1.3
+  video_compress: ^3.1.4
+  video_thumbnail: ^0.5.3
+
+  # QR
+  qr_flutter: ^4.1.0
+
+  font_awesome_flutter: ^10.12.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: ^0.14.1
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - .env
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/images/app_icon.png"
+  adaptive_icon_background: "#00221C"
+  adaptive_icon_foreground: "assets/images/app_icon.png"
+  windows:
+    generate: true
+    image_path: "assets/images/app_icon.png"
+    icon_size: 256
